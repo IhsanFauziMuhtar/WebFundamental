@@ -1,0 +1,138 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-09-14T17:36:17.717Z",
+    "end": "2026-09-14T17:36:23.406Z",
+    "duration": 5689,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6f6afa66-b70c-42b6-b021-669e5b55454b",
+      "title": "",
+      "fullFile": "C:\\Users\\Admin\\OneDrive\\Dokumen\\WebFundamental\\test\\belajarBareng.js",
+      "file": "\\test\\belajarBareng.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f0a53b79-9907-4d64-94ad-7a0fec3324ac",
+          "title": "Add User Feature Test",
+          "fullFile": "C:\\Users\\Admin\\OneDrive\\Dokumen\\WebFundamental\\test\\belajarBareng.js",
+          "file": "\\test\\belajarBareng.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Add User Feature Test\"",
+              "fullTitle": "Add User Feature Test \"before all\" hook in \"Add User Feature Test\"",
+              "timedOut": false,
+              "duration": 445,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build();",
+              "err": {},
+              "uuid": "d9d504ca-14e4-4cdd-bd2f-aa818a0a04f0",
+              "parentUUID": "f0a53b79-9907-4d64-94ad-7a0fec3324ac",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Add User Feature Test\"",
+              "fullTitle": "Add User Feature Test \"after all\" hook in \"Add User Feature Test\"",
+              "timedOut": false,
+              "duration": 183,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "0253bc68-13f7-40db-b0be-29a64881aba5",
+              "parentUUID": "f0a53b79-9907-4d64-94ad-7a0fec3324ac",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Should successfully add a new user and display toast notification",
+              "fullTitle": "Add User Feature Test Should successfully add a new user and display toast notification",
+              "timedOut": false,
+              "duration": 5054,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Buka website\nawait driver.get(\"https://belajar-bareng.onrender.com/\");\n// 2. Login\nlet usernameInput = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"username-input\"]')), \n  30000\n);\nlet passwordInput = await driver.findElement(By.css('[data-testid=\"password-input\"]'));\nlet loginButton = await driver.findElement(By.css('[data-testid=\"login-button\"]'));\nawait usernameInput.sendKeys(\"admin\");\nawait passwordInput.sendKeys(\"admin\");\nawait loginButton.click();\n// 3. Klik tombol 'Add'\nlet addButton = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"add-button\"]')), \n  10000\n);\nawait addButton.click();\n// 4. Form Add Users\nlet addUsernameInput = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"username-input\"]')), \n  10000\n);\nlet addAgeInput = await driver.findElement(By.css('[data-testid=\"age-input\"]'));\nlet submitButton = await driver.findElement(By.css('[data-testid=\"submit-button\"]'));\nlet isFormVisible = await addUsernameInput.isDisplayed();\nassert.strictEqual(isFormVisible, true, \"Form Add Users gagal ditampilkan!\");\n// 5. Input Data & Submit\nawait addUsernameInput.sendKeys(\"messi\");\nawait addAgeInput.sendKeys(\"45\");\nawait submitButton.click();\n// 6. Assertion Toast Notification\n// Menunggu elemen teks didalam toast muncul\nlet toastElement = await driver.wait(\n  until.elementLocated(By.css('#success-added [data-testid=\"toast-content\"]')), \n  10000\n);\n// Pastikan elemen benar-benar terlihat\nawait driver.wait(until.elementIsVisible(toastElement), 5000);\nlet toastText = await toastElement.getText();\nconsole.log(\"Pesan Toast yang tertangkap:\", `\"${toastText}\"`);\n// Gunakan Regex (i = ignore case) agar tidak sensitif huruf besar/kecil\nconst isMatched = /User successfully added/i.test(toastText);\nassert.strictEqual(\n  isMatched, \n  true, \n  `Pesan toast tidak sesuai! Teks yang didapat: \"${toastText}\"`\n);",
+              "err": {},
+              "uuid": "52c219b5-b1ae-4c3f-a259-bcd66cbb42a4",
+              "parentUUID": "f0a53b79-9907-4d64-94ad-7a0fec3324ac",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "52c219b5-b1ae-4c3f-a259-bcd66cbb42a4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5054,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 100000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.8.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.1.0"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
