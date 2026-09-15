@@ -1,5 +1,6 @@
-const { Builder, By, until } = require('selenium-webdriver');
+const { Builder, By, until, Options } = require('selenium-webdriver');
 const assert = require('assert');
+const chrome = require('selenium-webdriver/chrome')
 
 describe("Add User Feature Test", function () {
   this.timeout(60000);
@@ -7,7 +8,9 @@ describe("Add User Feature Test", function () {
   let driver;
 
   before(async function () {
-    driver = await new Builder().forBrowser('chrome').build();
+    let Options = new chrome.Options();
+    Options.addArguments("--headless")
+    driver = await new Builder().forBrowser('chrome').setChromeOptions(Options).build();
   });
 
   after(async function () {
@@ -71,3 +74,6 @@ describe("Add User Feature Test", function () {
     );
   });
 });
+
+
+// 
